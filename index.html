@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJCC Antofagasta | Juventudes Comunistas de Chile</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        jjccRed: '#C62828',
+                        jjccRedHover: '#A71D1D',
+                        bgMinimal: '#FAF9F6',
+                        bgWhite: '#FFFFFF',
+                        borderLight: '#E8E5DF',
+                        textPrimary: '#171717',
+                        textSecondary: '#666666',
+                        textMuted: '#8C8C8C'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4D0C8;
+            border-radius: 3px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #444;
+        }
+        /* Subtle float animation for logo */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+        .animate-float {
+            animation: subtleFloat 4s ease-in-out infinite;
+        }
+        /* Hover lift effect for minimalist cards */
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.06);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.4);
+        }
+
+        /* Indicador de navegación animado y activo */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #C62828;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 2px;
+        }
+        .nav-link:hover::after,
+        .nav-link.active-nav::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-bgMinimal dark:bg-neutral-950 text-textPrimary dark:text-neutral-100 font-sans antialiased flex flex-col min-h-screen selection:bg-jjccRed selection:text-white">
+
+    <!-- NAV BAR MINIMALISTA -->
+    <header class="sticky top-0 z-40 bg-bgMinimal/90 dark:bg-neutral-950/90 backdrop-blur-md border-b border-borderLight dark:border-neutral-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo & Marca -->
+                <a href="#inicio" class="smooth-scroll flex items-center space-x-3 group">
+                    <div class="w-10 h-10 flex-shrink-0 transition-transform duration-300 group-hover:scale-105 animate-float">
+                        <svg viewBox="0 0 500 500" class="w-10 h-10">
+                            <g fill="#FFCC00">
+                                <path d="M 120 180 Q 90 260 140 380 Q 180 410 210 430 Q 170 380 150 330 Q 120 250 140 200 Z"/>
+                                <path d="M 380 180 Q 410 260 360 380 Q 320 410 290 430 Q 330 380 350 330 Q 380 250 360 200 Z"/>
+                            </g>
+                            <clipPath id="circleClip">
+                                <circle cx="250" cy="240" r="140"/>
+                            </clipPath>
+                            <g clip-path="url(#circleClip)">
+                                <rect x="100" y="90" width="300" height="150" fill="#0055A5"/>
+                                <rect x="100" y="240" width="300" height="160" fill="#C62828"/>
+                                <polygon points="230,90 270,90 260,200 240,200" fill="#FFFFFF"/>
+                                <path d="M 205 240 C 205 210 230 190 250 190 C 270 190 295 210 295 240 C 295 270 270 275 250 275 C 230 275 205 270 205 240 Z" fill="#FFCC00"/>
+                                <path d="M 180 320 Q 250 260 320 320 Q 250 370 180 320 Z" fill="#FFFFFF"/>
+                            </g>
+                            <text x="250" y="75" font-family="'Outfit', sans-serif" font-weight="800" font-size="34" fill="#C62828" text-anchor="middle" letter-spacing="3">CHILE</text>
+                            <text x="175" y="260" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" fill="#FFCC00" text-anchor="middle">JJ</text>
+                            <text x="325" y="260" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" fill="#FFCC00" text-anchor="middle">CC</text>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-base tracking-tight text-textPrimary dark:text-neutral-100 leading-none">
+                            JJCC <span class="text-jjccRed">Antofagasta</span>
+                        </span>
+                        <span class="text-[10px] text-textMuted dark:text-neutral-400 font-medium tracking-widest uppercase mt-0.5">
+                            Regional Antofagasta
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Navegación Escritorio -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#inicio" class="nav-link smooth-scroll text-textSecondary dark:text-neutral-400 hover:text-textPrimary dark:hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors py-1">Inicio</a>
+                    <a href="#historia" class="nav-link smooth-scroll text-textSecondary dark:text-neutral-400 hover:text-textPrimary dark:hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors py-1">Historia & Recabarren</a>
+                    <a href="#regional" class="nav-link smooth-scroll text-textSecondary dark:text-neutral-400 hover:text-textPrimary dark:hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors py-1">Ejes de Trabajo</a>
+                    
+                    <!-- BOTÓN MODO OSCURO -->
+                    <button onclick="toggleDarkMode()" 
+                            aria-label="Cambiar modo oscuro"
+                            class="p-2 text-textSecondary dark:text-neutral-300 hover:text-jjccRed dark:hover:text-jjccRed rounded-full transition-transform duration-200 active:scale-95 focus:outline-none">
+                        <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                    </button>
+
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScClHg59sKcVLCJPHn5PULgQ6qYPsQFQutmoLEJyOImQpUV4g/viewform?pli=1" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="bg-jjccRed hover:bg-jjccRedHover text-white text-xs font-bold tracking-wider uppercase px-5 py-2.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-95">
+                        Militar
+                    </a>
+                </nav>
+
+                <!-- Botón Menú Móvil & Tema -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button onclick="toggleDarkMode()" 
+                            aria-label="Cambiar modo oscuro"
+                            class="p-2 text-textSecondary dark:text-neutral-300 focus:outline-none">
+                        <i id="theme-icon-mobile" class="fa-solid fa-moon text-base"></i>
+                    </button>
+
+                    <button id="mobile-menu-btn" class="text-textPrimary dark:text-white focus:outline-none p-2" aria-label="Abrir Menú">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-bgMinimal dark:bg-neutral-950 border-b border-borderLight dark:border-neutral-800 px-6 py-4 space-y-3">
+            <a href="#inicio" class="smooth-scroll mobile-link block text-sm font-medium text-textPrimary dark:text-neutral-200 py-1">Inicio</a>
+            <a href="#historia" class="smooth-scroll mobile-link block text-sm font-medium text-textPrimary dark:text-neutral-200 py-1">Historia & Recabarren</a>
+            <a href="#regional" class="smooth-scroll mobile-link block text-sm font-medium text-textPrimary dark:text-neutral-200 py-1">Ejes Regionales</a>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScClHg59sKcVLCJPHn5PULgQ6qYPsQFQutmoLEJyOImQpUV4g/viewform?pli=1" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="mobile-link block text-center bg-jjccRed text-white text-xs font-bold tracking-wider uppercase py-3 rounded-xl mt-3">
+                Formulario de Militancia
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO MINIMALISTA -->
+    <section id="inicio" class="py-20 md:py-28 border-b border-borderLight dark:border-neutral-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            
+            <div data-aos="fade-down" data-aos-duration="800">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest text-jjccRed bg-red-50 dark:bg-red-950/40 border border-red-100 dark:border-red-900/40 px-3 py-1 rounded-full mb-6">
+                    Juventudes Comunistas de Chile
+                </span>
+            </div>
+
+            <h1 data-aos="fade-up" data-aos-duration="900" data-aos-delay="100" class="text-4xl sm:text-6xl font-heading font-normal text-textPrimary dark:text-white tracking-tight leading-tight mb-6">
+                Organización popular e histórica en la II Región.
+            </h1>
+
+            <p data-aos="fade-up" data-aos-duration="900" data-aos-delay="200" class="text-lg text-textSecondary dark:text-neutral-400 font-normal max-w-2xl mx-auto leading-relaxed mb-10">
+                Construyendo transformación social, defendiendo la educación pública y luchando junto a los jóvenes trabajadores de Antofagasta, Calama y Tocopilla.
+            </p>
+
+            <div data-aos="fade-up" data-aos-duration="900" data-aos-delay="300" class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScClHg59sKcVLCJPHn5PULgQ6qYPsQFQutmoLEJyOImQpUV4g/viewform?pli=1" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="w-full sm:w-auto bg-jjccRed hover:bg-jjccRedHover text-white font-normal text-sm px-8 py-3.5 rounded-full shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center space-x-2">
+                    <span>Solicitar Militancia</span>
+                    <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </a>
+
+                <button onclick="openFormModal()" 
+                        class="w-full sm:w-auto bg-bgWhite dark:bg-neutral-900 text-textPrimary dark:text-white font-normal text-sm px-7 py-3.5 rounded-full border border-borderLight dark:border-neutral-800 hover:border-textMuted hover:scale-105 active:scale-95 transition-all duration-200">
+                    Ver Formulario Integrado
+                </button>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- HISTORIA CON ESTILO MINIMALISTA Y LIMPIO -->
+    <section id="historia" class="py-24 border-b border-borderLight dark:border-neutral-800 bg-bgWhite dark:bg-neutral-900">
+        <div class="max-w-5xl mx-auto px-6">
+            
+            <div class="mb-14" data-aos="fade-up">
+                <span class="text-xs font-normal uppercase tracking-widest text-jjccRed block mb-2">Memoria Viva & Pensamiento</span>
+                <h2 class="text-3xl font-heading font-normal text-textPrimary dark:text-white tracking-tight">Historia & Legado de Luis Emilio Recabarren</h2>
+                <p class="text-textSecondary dark:text-neutral-400 text-sm mt-2 max-w-2xl">
+                    Reseña histórica del fundador del movimiento obrero e ideólogo revolucionario en el norte de Chile.
+                </p>
+            </div>
+
+            <!-- TARJETAS HISTÓRICAS MINIMALISTAS CON HOVER & AOS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div data-aos="fade-up" data-aos-delay="100" class="card-hover bg-bgMinimal dark:bg-neutral-950 p-6 rounded-2xl border border-borderLight dark:border-neutral-800">
+                    <span class="text-xs text-jjccRed uppercase tracking-wider font-medium block mb-2">Fundador</span>
+                    <h3 class="text-lg font-normal text-textPrimary dark:text-white mb-2">Luis Emilio Recabarren (1876 - 1924)</h3>
+                    <p class="text-xs text-textSecondary dark:text-neutral-400 leading-relaxed">
+                        Impulsor de la prensa obrera, los centros de estudios sociales y el Partido Comunista de Chile en la pampa salitrera.
+                    </p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="card-hover bg-bgMinimal dark:bg-neutral-950 p-6 rounded-2xl border border-borderLight dark:border-neutral-800">
+                    <span class="text-xs text-jjccRed uppercase tracking-wider font-medium block mb-2">Prensa y Cultura</span>
+                    <h3 class="text-lg font-normal text-textPrimary dark:text-white mb-2">El Despertar de los Trabajadores</h3>
+                    <p class="text-xs text-textSecondary dark:text-neutral-400 leading-relaxed">
+                        Fundador de periódicos obreros en Iquique, Antofagasta y Tocopilla para la educación y concienciación del pueblo.
+                    </p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="card-hover bg-bgMinimal dark:bg-neutral-950 p-6 rounded-2xl border border-borderLight dark:border-neutral-800">
+                    <span class="text-xs text-jjccRed uppercase tracking-wider font-medium block mb-2">Internacionalismo</span>
+                    <h3 class="text-lg font-normal text-textPrimary dark:text-white mb-2">Legado Político & Social</h3>
+                    <p class="text-xs text-textSecondary dark:text-neutral-400 leading-relaxed">
+                        Diputado por Antofagasta y referente histórico del pensamiento marxista y juvenil en América Latina.
+                    </p>
+                </div>
+            </div>
+
+            <!-- HITOS CRONOLÓGICOS CON AOS -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <div data-aos="fade-up" data-aos-delay="100" class="border-t border-borderLight dark:border-neutral-800 pt-6">
+                    <span class="text-2xl font-heading text-jjccRed block mb-2">1932</span>
+                    <h3 class="text-base font-normal text-textPrimary dark:text-white mb-2">Fundación de la JJCC</h3>
+                    <p class="text-textSecondary dark:text-neutral-400 text-xs leading-relaxed">
+                        Formación de la Federación de Juventudes Comunistas para canalizar las demandas estudiantiles y obreras.
+                    </p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="border-t border-borderLight dark:border-neutral-800 pt-6">
+                    <span class="text-2xl font-heading text-jjccRed block mb-2">1970</span>
+                    <h3 class="text-base font-normal text-textPrimary dark:text-white mb-2">Unidad Popular</h3>
+                    <p class="text-textSecondary dark:text-neutral-400 text-xs leading-relaxed">
+                        Despliegue masivo en trabajos voluntarios y proyectos culturales respaldando el gobierno popular.
+                    </p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="border-t border-borderLight dark:border-neutral-800 pt-6">
+                    <span class="text-2xl font-heading text-jjccRed block mb-2">1973 - 1989</span>
+                    <h3 class="text-base font-normal text-textPrimary dark:text-white mb-2">Resistencia Democrática</h3>
+                    <p class="text-textSecondary dark:text-neutral-400 text-xs leading-relaxed">
+                        Trabajo en la clandestinidad por la recuperación democrática y la defensa inquebrantable de los DDHH.
+                    </p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400" class="border-t border-borderLight dark:border-neutral-800 pt-6">
+                    <span class="text-2xl font-heading text-jjccRed block mb-2">Actualidad</span>
+                    <h3 class="text-base font-normal text-textPrimary dark:text-white mb-2">Luchas Presentes</h3>
+                    <p class="text-textSecondary dark:text-neutral-400 text-xs leading-relaxed">
+                        Organización por la educación gratuita, el trabajo digno y el bienestar de la juventud nortina.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EJES REGIONALES -->
+    <section id="regional" class="py-24 border-b border-borderLight dark:border-neutral-800">
+        <div class="max-w-5xl mx-auto px-6">
+            
+            <div class="mb-16 text-center" data-aos="fade-up">
+                <span class="text-xs font-normal uppercase tracking-widest text-jjccRed block mb-2">Presencia Territorial</span>
+                <h2 class="text-3xl font-heading font-normal text-textPrimary dark:text-white tracking-tight">Ejes de Trabajo en Antofagasta</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div data-aos="zoom-in-up" data-aos-delay="100" class="card-hover bg-bgWhite dark:bg-neutral-900 p-8 rounded-2xl border border-borderLight dark:border-neutral-800 hover:border-red-200 dark:hover:border-red-950">
+                    <div class="w-10 h-10 bg-red-50 dark:bg-red-950/40 text-jjccRed rounded-lg flex items-center justify-center text-lg mb-6">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-lg font-normal text-textPrimary dark:text-white mb-2">Frente Estudiantil</h3>
+                    <p class="text-textSecondary dark:text-neutral-400 text-xs leading-relaxed">
+                        Organización en la UA, UCN y educación secundaria para democratizar los espacios de formación.
+                    </p>
+                </div>
+
+                <div data-aos="zoom-in-up" data-aos-delay="200" class="card-hover bg-bgWhite dark:bg-neutral-900 p-8 rounded-2xl border border-borderLight dark:border-neutral-800 hover:border-red-200 dark:hover:border-red-950">
+                    <div class="w-10 h-10 bg-red-50 dark:bg-red-950/40 text-jjccRed rounded-lg flex items-center justify-center text-lg mb-6">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <h3 class="text-lg font-normal text-textPrimary dark:text-white mb-2">Trabajo Territorial</h3>
+                    <p class="text-textSecondary dark:text-neutral-400 text-xs leading-relaxed">
+                        Despliegue comunitario en poblaciones de Antofagasta y Tocopilla fomentando deporte y cultura.
+                    </p>
+                </div>
+
+                <div data-aos="zoom-in-up" data-aos-delay="300" class="card-hover bg-bgWhite dark:bg-neutral-900 p-8 rounded-2xl border border-borderLight dark:border-neutral-800 hover:border-red-200 dark:hover:border-red-950">
+                    <div class="w-10 h-10 bg-red-50 dark:bg-red-950/40 text-jjccRed rounded-lg flex items-center justify-center text-lg mb-6">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-lg font-normal text-textPrimary dark:text-white mb-2">Juventud Trabajadora</h3>
+                    <p class="text-textSecondary dark:text-neutral-400 text-xs leading-relaxed">
+                        Articulación y defensa de los derechos laborales de las y los jóvenes en la región minera.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION MINIMALISTA -->
+    <section class="py-20 bg-bgWhite dark:bg-neutral-900 text-center">
+        <div class="max-w-3xl mx-auto px-6" data-aos="fade-up">
+            <h2 class="text-3xl font-heading font-normal text-textPrimary dark:text-white tracking-tight mb-4">¿Te interesa sumarte?</h2>
+            <p class="text-textSecondary dark:text-neutral-400 text-sm max-w-lg mx-auto mb-8">
+                Forma parte del trabajo de la JJCC en Antofagasta completando el formulario oficial de militancia.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScClHg59sKcVLCJPHn5PULgQ6qYPsQFQutmoLEJyOImQpUV4g/viewform?pli=1" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="inline-flex items-center space-x-2 bg-jjccRed hover:bg-jjccRedHover text-white text-sm font-normal px-8 py-3.5 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md">
+                <span>Completar Formulario de Militancia</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- MODAL INTEGRADO PARA VER EL FORMULARIO -->
+    <div id="form-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-bgWhite dark:bg-neutral-900 w-full max-w-3xl h-[85vh] rounded-2xl shadow-xl flex flex-col overflow-hidden border border-borderLight dark:border-neutral-800">
+            <div class="bg-bgMinimal dark:bg-neutral-950 p-4 border-b border-borderLight dark:border-neutral-800 flex justify-between items-center">
+                <span class="text-xs font-normal uppercase tracking-wider text-textPrimary dark:text-neutral-200">Formulario de Militancia JJCC</span>
+                <button onclick="closeFormModal()" class="text-textMuted hover:text-textPrimary dark:hover:text-white text-lg p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="flex-1 w-full bg-white relative">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScClHg59sKcVLCJPHn5PULgQ6qYPsQFQutmoLEJyOImQpUV4g/viewform?embedded=true" 
+                        class="w-full h-full border-0" 
+                        title="Formulario de Militancia JJCC">
+                    Cargando formulario...
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER MINIMALISTA CON LOGO EN PEQUEÑO Y BOTÓN MODO OSCURO -->
+    <footer class="border-t border-borderLight dark:border-neutral-800 py-12 bg-bgMinimal dark:bg-neutral-950 text-center">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col items-center justify-center space-y-4">
+            
+            <!-- LOGO PEQUEÑO AL FINAL -->
+            <div class="w-8 h-8 opacity-90 hover:opacity-100 transition-opacity">
+                <svg viewBox="0 0 500 500" class="w-8 h-8">
+                    <g fill="#FFCC00">
+                        <path d="M 120 180 Q 90 260 140 380 Q 180 410 210 430 Q 170 380 150 330 Q 120 250 140 200 Z"/>
+                        <path d="M 380 180 Q 410 260 360 380 Q 320 410 290 430 Q 330 380 350 330 Q 380 250 360 200 Z"/>
+                    </g>
+                    <clipPath id="circleClipFooter">
+                        <circle cx="250" cy="240" r="140"/>
+                    </clipPath>
+                    <g clip-path="url(#circleClipFooter)">
+                        <rect x="100" y="90" width="300" height="150" fill="#0055A5"/>
+                        <rect x="100" y="240" width="300" height="160" fill="#C62828"/>
+                        <polygon points="230,90 270,90 260,200 240,200" fill="#FFFFFF"/>
+                        <path d="M 205 240 C 205 210 230 190 250 190 C 270 190 295 210 295 240 C 295 270 270 275 250 275 C 230 275 205 270 205 240 Z" fill="#FFCC00"/>
+                        <path d="M 180 320 Q 250 260 320 320 Q 250 370 180 320 Z" fill="#FFFFFF"/>
+                    </g>
+                    <text x="250" y="75" font-family="'Outfit', sans-serif" font-weight="800" font-size="34" fill="#C62828" text-anchor="middle" letter-spacing="3">CHILE</text>
+                    <text x="175" y="260" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" fill="#FFCC00" text-anchor="middle">JJ</text>
+                    <text x="325" y="260" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" fill="#FFCC00" text-anchor="middle">CC</text>
+                </svg>
+            </div>
+
+            <p class="font-heading font-normal text-sm text-textPrimary dark:text-neutral-200">JJCC ANTOFAGASTA</p>
+            <p class="text-xs text-textMuted dark:text-neutral-500">Juventudes Comunistas de Chile &bull; Regional Antofagasta</p>
+            
+            <!-- BOTÓN MODO OSCURO FOOTER -->
+            <button onclick="toggleDarkMode()" 
+                    class="inline-flex items-center space-x-2 text-xs text-textSecondary dark:text-neutral-400 hover:text-jjccRed dark:hover:text-jjccRed border border-borderLight dark:border-neutral-800 px-4 py-2 rounded-full transition-all hover:scale-105 active:scale-95 mt-2">
+                <i id="theme-icon-footer" class="fa-solid fa-moon"></i>
+                <span id="theme-text-footer">Modo Oscuro</span>
+            </button>
+
+            <p class="text-[11px] text-textMuted dark:text-neutral-600 pt-4">&copy; 2026 JJCC Chile.</p>
+        </div>
+    </footer>
+
+    <!-- AOS Script (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-cubic'
+        });
+
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const formModal = document.getElementById('form-modal');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        function openFormModal() {
+            formModal.classList.remove('hidden');
+        }
+
+        function closeFormModal() {
+            formModal.classList.add('hidden');
+        }
+
+        // MODO OSCURO (DARK MODE)
+        function updateThemeUI(isDark) {
+            const iconNav = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            const iconFooter = document.getElementById('theme-icon-footer');
+            const textFooter = document.getElementById('theme-text-footer');
+
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                if (iconNav) iconNav.className = 'fa-solid fa-sun text-yellow-400 text-sm';
+                if (iconMobile) iconMobile.className = 'fa-solid fa-sun text-yellow-400 text-base';
+                if (iconFooter) iconFooter.className = 'fa-solid fa-sun text-yellow-400';
+                if (textFooter) textFooter.textContent = 'Modo Claro';
+            } else {
+                document.documentElement.classList.remove('dark');
+                if (iconNav) iconNav.className = 'fa-solid fa-moon text-sm';
+                if (iconMobile) iconMobile.className = 'fa-solid fa-moon text-base';
+                if (iconFooter) iconFooter.className = 'fa-solid fa-moon';
+                if (textFooter) textFooter.textContent = 'Modo Oscuro';
+            }
+        }
+
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const newDarkState = !isDark;
+            localStorage.setItem('theme', newDarkState ? 'dark' : 'light');
+            updateThemeUI(newDarkState);
+        }
+
+        // Inicializar preferencia de tema
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDark = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+            updateThemeUI(isDark);
+        })();
+
+        // DESPLAZAMIENTO SUAVE PERSONALIZADO (CUSTOM SMOOTH SCROLL WITH EASING)
+        document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80; // Altura de la barra de navegación
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        // Scroll suave con la API nativa optimizada
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Cierra el menú móvil si está abierto
+                        if (mobileMenu) mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // HIGHLIGHT ACTIVO SEGÚN DESPLAZAMIENTO DE PÁGINA
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                const sectionId = current.getAttribute('id');
+                const navItem = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+
+                if (navItem) {
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navItem.classList.add('active-nav', 'text-textPrimary', 'dark:text-white');
+                    } else {
+                        navItem.classList.remove('active-nav', 'text-textPrimary', 'dark:text-white');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
